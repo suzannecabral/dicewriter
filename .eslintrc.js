@@ -9,6 +9,7 @@ module.exports = {
     'plugin:react/recommended',
     // extend plugin:storybook/<configuration>, such as:
     'plugin:storybook/recommended',
+    'plugin:react-hooks/recommended',
     'prettier',
     'plugin:prettier/recommended',
   ],
@@ -19,8 +20,15 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['react', 'prettier'],
+  plugins: ['react', 'prettier', 'react-hooks'],
   rules: {
     'prettier/prettier': 'error',
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': [
+      'warn',
+      {
+        additionalHooks: '(useRecoilCallback|useRecoilTransaction_UNSTABLE)',
+      },
+    ],
   },
 };
